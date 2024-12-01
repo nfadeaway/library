@@ -17,10 +17,17 @@ from django.contrib import admin
 from django.urls import path, include
 
 from library.views import page404
+from main_app import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('library.urls')),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls))
+    ] + urlpatterns
 
 handler404 = page404

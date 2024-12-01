@@ -1,4 +1,4 @@
-from django.db.models import Q
+from django.db.models import Q, Prefetch
 from django.http import HttpResponseNotFound
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
@@ -19,15 +19,16 @@ class BooksListView(CommonDataMixin, ListView):
 
     def get_queryset(self):
         query = self.request.GET.get('q', '').strip()
+        queryset = super().get_queryset().prefetch_related('authors')
         if not query:
             cached_books = cache.get('books_list')
             if not cached_books:
-                cached_books = super().get_queryset()
+                cached_books = queryset
                 cache.set('books_list', cached_books, timeout=60 * 5)
             return cached_books
-        return super().get_queryset().filter(
+        return queryset.filter(
             Q(title__icontains=query) | Q(description__icontains=query) | Q(isbn__icontains=query) | Q(authors__surname__icontains=query)
-        )
+        ).distinct()
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -42,15 +43,16 @@ class AuthorsListView(CommonDataMixin, ListView):
 
     def get_queryset(self):
         query = self.request.GET.get('q', '').strip()
+        queryset = super().get_queryset().prefetch_related('books')
         if not query:
             cached_authors = cache.get('authors_list')
             if not cached_authors:
-                cached_authors = super().get_queryset()
+                cached_authors = queryset
                 cache.set('authors_list', cached_authors, timeout=60 * 5)
             return cached_authors
-        return super().get_queryset().filter(
+        return queryset.filter(
             Q(surname__icontains=query)
-        )
+        ).distinct()
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
