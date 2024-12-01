@@ -1,0 +1,16 @@
+{
+  "status": "done",
+  "assets": {
+    "main.js": {
+      "name": "main.js",
+      "path": "C:\\Users\\yeah\\Desktop\\github\\library\\main_app\\frontend\\dist\\main.js",
+      "publicPath": "/static/main.js"
+    }
+  },
+  "chunks": {
+    "main": [
+      "main.js"
+    ]
+  },
+  "publicPath": "/static/"
+}

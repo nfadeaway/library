@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar',
+    'webpack_loader',
     'library.apps.LibraryConfig',
     'django_select2',
 ]
@@ -131,6 +132,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend/dist'),
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -162,3 +168,11 @@ SELECT2_CACHE_BACKEND = 'select2'
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'frontend/webpack-stats.json'),
+    }
+}
