@@ -1,0 +1,55 @@
+{% extends 'library/base.html' %}
+{% load library_tags %}
+
+{% block content %}
+
+<div class="authors">
+    <h1 class="authors__title">
+        {{ page_title }}
+    </h1>
+    <form class="form" method="get">
+        <input type="text" name="q" placeholder="Поиск...">
+        <button type="submit" class="form__submit-btn form__submit-btn_search btn">Искать</button>
+    </form>
+    {% if authors %}
+        <div class="authors__list">
+            {% for author in authors %}
+                <div class="authors__author">
+                    <div class="authors__fullname">
+                        <div class="field-name">
+                            {{ author|field_verbose_name:"name" }}
+                        </div>
+                        <a href="{{ author.get_absolute_url }}">{{ author }}</a>
+                    </div>
+                    <div class="authors__birth-date">
+                        <div class="field-name">
+                            {{ author|field_verbose_name:"birth_date" }}
+                        </div>
+                        <div>
+                            {% if author.birth_date %}
+                                {{ author.birth_date }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="authors__country">
+                        <div class="field-name">
+                            {{ author|field_verbose_name:"country" }}
+                        </div>
+                        <div>{{ author.country }}</div>
+                    </div>
+                    <form class="form" method="post" action="{% url 'delete_author' author_id=author.pk %}">
+                      {% csrf_token %}
+                      <button type="submit" class="form__submit-btn form__submit-btn_detele btn">Удалить</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="pagination">
+            {% for page_num in paginator.page_range %}
+                <a class="pagination__page-num{% if page_obj.number == page_num %} pagination__page-num_selected{% endif %}" href="?page={{ page_num }}">{{ page_num }}</a>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

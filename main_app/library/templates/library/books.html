@@ -1,0 +1,55 @@
+{% extends 'library/base.html' %}
+{% load library_tags %}
+
+{% block content %}
+
+<div class="books">
+    <h1 class="books__title">
+        {{ page_title }}
+    </h1>
+    <form class="form" method="get">
+        <input type="text" name="q" placeholder="Поиск...">
+        <button type="submit" class="form__submit-btn form__submit-btn_search btn">Искать</button>
+    </form>
+    {% if books %}
+        <div class="books__list">
+            {% for book in books %}
+                <div class="books__book">
+                    <div class="books__book-title">
+                        <div class="field-name">
+                            {{ book|field_verbose_name:"title" }}
+                        </div>
+                        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
+                    </div>
+                    <div class="books__book-publication-date">
+                        <div class="field-name">
+                            {{ book|field_verbose_name:"publication_date" }}
+                        </div>
+                        <div>{{ book.publication_date }}</div>
+                    </div>
+                    <div class="books__book-authors">
+                        <div class="field-name">
+                            {{ book|field_verbose_name:"authors" }}
+                        </div>
+                        {% for author in book.authors.all %}
+                            <div class="books__book-author">
+                                <a href="{{ author.get_absolute_url }}">{{ author }}</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <form class="form" method="post" action="{% url 'delete_book' book_id=book.pk %}">
+                      {% csrf_token %}
+                      <button type="submit" class="form__submit-btn form__submit-btn_detele btn">Удалить</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="pagination">
+            {% for page_num in paginator.page_range %}
+                <a class="pagination__page-num{% if page_obj.number == page_num %} pagination__page-num_selected{% endif %}" href="?page={{ page_num }}">{{ page_num }}</a>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

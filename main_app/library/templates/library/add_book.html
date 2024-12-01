@@ -1,0 +1,22 @@
+{% extends 'library/base.html' %}
+{% load library_tags %}
+
+{% block content %}
+
+<div class="add-book">
+    <h1 class="add-book__title">
+        {{ page_title }}
+    </h1>
+    <form class="form" method="post">
+        {% csrf_token %}
+        {% for row in form %}
+            <div class="form__row">
+                <label class="form__label" for="{{ row.id_for_label }}">{{ row.label }}:</label>
+                {{ row }}
+            </div>
+        {% endfor %}
+        <button type="submit" class="form__submit-btn btn">Добавить</button>
+    </form>
+</div>
+
+{% endblock %}
