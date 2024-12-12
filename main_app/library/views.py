@@ -105,7 +105,7 @@ class AuthorDetailView(CommonDataMixin, DetailView):
 class AddBookView(CommonDataMixin, CreateView):
     model = Author
     form_class = AddBookForm
-    template_name = 'library/add_book.html'
+    template_name = 'library/add_item.html'
     success_url = reverse_lazy('books')
 
     def form_valid(self, form):
@@ -122,7 +122,7 @@ class AddBookView(CommonDataMixin, CreateView):
 class AddAuthorView(CommonDataMixin, CreateView):
     model = Author
     form_class = AddAuthorForm
-    template_name = 'library/add_author.html'
+    template_name = 'library/add_item.html'
     success_url = reverse_lazy('authors')
 
     def form_valid(self, form):

@@ -7,51 +7,53 @@
     <h1 class="author__title">
         {{ author }}
     </h1>
-    <div class="author__birth-date">
-        <div class="field-name">
-            {{ author|field_verbose_name:"birth_date" }}
-        </div>
-        <div>
-            {% if author.birth_date %}
-                {{ author.birth_date }}
-            {% endif %}
-        </div>
-    </div>
-    <div class="author__country">
-        <div class="field-name">
-            {{ author|field_verbose_name:"country" }}
-        </div>
-        <div>{{ author.country }}</div>
-    </div>
-    {% if author.books.all %}
-        <div class="author__books">
-            <div class="author__books-title">
-                Все книги автора:
+    <div class="author__info">
+        <div class="author__birth-date">
+            <div class="field-name">
+                {{ author|field_verbose_name:"birth_date" }}
             </div>
-            {% for book in author.books.all %}
-                <div class=author__book">
-                    <div class="author__book-title">
-                        <div class="field-name">
-                            {{ book|field_verbose_name:"title" }}
-                        </div>
-                        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
-                    </div>
-                    <div class="author__book-genre">
-                        <div class="field-name">
-                            {{ book|field_verbose_name:"genre" }}
-                        </div>
-                        <div>{{ book.genre }}</div>
-                    </div>
-                    <div class="author__book-publication-date">
-                        <div class="field-name">
-                            {{ book|field_verbose_name:"publication_date" }}
-                        </div>
-                        <div>{{ book.publication_date }}</div>
-                    </div>
-                </div>
-            {% endfor %}
+            <div>
+                {% if author.birth_date %}
+                    {{ author.birth_date }}
+                {% endif %}
+            </div>
         </div>
-    {% endif %}
+        <div class="author__country">
+            <div class="field-name">
+                {{ author|field_verbose_name:"country" }}
+            </div>
+            <div>{{ author.country }}</div>
+        </div>
+        {% if author.books.all %}
+            <div class="author__books">
+                <div class="author__books-title">
+                    Все книги автора:
+                </div>
+                {% for book in author.books.all %}
+                    <div class="author__book">
+                        <div class="author__book-title">
+                            <div class="field-name">
+                                {{ book|field_verbose_name:"title" }}
+                            </div>
+                            <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
+                        </div>
+                        <div class="author__book-genre">
+                            <div class="field-name">
+                                {{ book|field_verbose_name:"genre" }}
+                            </div>
+                            <div>{{ book.genre }}</div>
+                        </div>
+                        <div class="author__book-publication-date">
+                            <div class="field-name">
+                                {{ book|field_verbose_name:"publication_date" }}
+                            </div>
+                            <div>{{ book.publication_date }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
 </div>
 
 {% endblock %}

@@ -1,5 +1,5 @@
 import 'select2/dist/css/select2.min.css';
-import './style.css';
+import './style.scss';
 
 import $ from 'jquery';
 import 'select2';

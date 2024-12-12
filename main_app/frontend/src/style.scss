@@ -1,0 +1,158 @@
+body {
+    width: 842px;
+    margin: 50px auto;
+    font-family: Arial, sans-serif;
+}
+
+.link {
+    text-decoration: none;
+    color: #fff;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.header__nav {
+    display: flex;
+    column-gap: 10px;
+}
+
+.header__nav-item {
+    display: flex;
+    border-radius: 5px;
+    background-color: blue;
+    font-size: 14px;
+    color: #fff;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+        opacity: 0.7;
+    }
+
+    .link {
+        display: flex;
+        min-width: 120px;
+        padding: 10px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+}
+
+.books {
+    display: flex;
+    flex-direction: column;
+}
+
+.books__list,
+.authors__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.books__book,
+.authors__author,
+.author__book {
+    display: grid;
+    grid-template-columns: 250px 150px 250px 150px;
+    column-gap: 10px;
+    padding: 5px;
+    border: 1px solid blue;
+    border-radius: 5px;
+}
+
+.form_search {
+    display: flex;
+    margin-bottom: 20px;
+    column-gap: 10px;
+}
+
+.field-name {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form_delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_add {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+
+    .form__row {
+        display: flex;
+        column-gap: 20px;
+    }
+
+    .form__label {
+        width: 155px;
+    }
+}
+
+.form__submit-btn {
+    width: fit-content;
+    display: flex;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+.form__submit-btn_search {
+    background-color: gray;
+}
+
+.form__submit-btn_detele {
+    background-color: red;
+}
+
+.form__submit-btn_add {
+    background-color: green;
+}
+
+.pagination {
+    display: flex;
+    margin-top: 20px;
+    column-gap: 15px;
+}
+
+.pagination__page-num_selected {
+    font-weight: 600;
+}
+
+.book__info,
+.author__info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.author__books {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.author__books-title {
+    font-weight: 600;
+    font-size: 18px;
+}

@@ -3,11 +3,11 @@
 
 {% block content %}
 
-<div class="add-book">
-    <h1 class="add-book__title">
+<div class="add-item">
+    <h1 class="add-item__title">
         {{ page_title }}
     </h1>
-    <form class="form" method="post">
+    <form class="form form_add" method="post">
         {% csrf_token %}
         {% for row in form %}
             <div class="form__row">
@@ -15,7 +15,7 @@
                 {{ row }}
             </div>
         {% endfor %}
-        <button type="submit" class="form__submit-btn btn">Добавить</button>
+        <button type="submit" class="form__submit-btn form__submit-btn_add btn">Добавить</button>
     </form>
 </div>
 

@@ -1,0 +1,31 @@
+# Python-related files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+
+# Node.js-related files
+node_modules/
+yarn-error.log
+yarn.lock
+npm-debug.log
+
+# Git
+.git/
+.gitignore
+
+# Logs and temp files
+*.log
+*.swp
+*.bak
+*.tmp
+
+# IDE config files
+.idea/
+.vscode/
+
+# Docker related
+.dockerignore
+Dockerfile*
+docker-compose.yml

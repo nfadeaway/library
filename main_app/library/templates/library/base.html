@@ -14,7 +14,7 @@
         <nav class="header__nav">
             {% for menu_item in menu %}
                 <div class="header__nav-item">
-                    <a href="{% url menu_item.url %}">{{ menu_item.nav_title }}</a>
+                    <a class="link" href="{% url menu_item.url %}">{{ menu_item.nav_title }}</a>
                 </div>
             {% endfor %}
         </nav>

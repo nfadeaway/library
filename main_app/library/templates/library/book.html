@@ -7,74 +7,75 @@
     <h1 class="book__title">
         {{ book }}
     </h1>
-    <div class="book__publication-date">
-        <div class="field-name">
-            {{ book|field_verbose_name:"publication_date" }}
-        </div>
-        <div>
-            {{ book.publication_date }}
-        </div>
-    </div>
-    <div class="book__isbn">
-        <div class="field-name">
-            {{ book|field_verbose_name:"isbn" }}
-        </div>
-        <div>
-            {{ book.isbn }}
-        </div>
-    </div>
-    <div class="book__genre">
-        <div class="field-name">
-            {{ book|field_verbose_name:"genre" }}
-        </div>
-        <div>
-            {{ book.genre }}
-        </div>
-    </div>
-    <div class="book__page-count">
-        <div class="field-name">
-            {{ book|field_verbose_name:"page_count" }}
-        </div>
-        <div>
-            {{ book.page_count }}
-        </div>
-    </div>
-    <div class="book__publisher">
-        <div class="field-name">
-            {{ book|field_verbose_name:"publisher" }}
-        </div>
-        <div>
-            {{ book.publisher }}
-        </div>
-    </div>
-    <div class="book__language">
-        <div class="field-name">
-            {{ book|field_verbose_name:"language" }}
-        </div>
-        <div>
-            {{ book.language }}
-        </div>
-    </div>
-    <div class="book__description">
-        <div class="field-name">
-            {{ book|field_verbose_name:"description" }}
-        </div>
-        <div>
-            {{ book.description }}
-        </div>
-    </div>
-    <div class="authors">
-        <div class="field-name">
-            {{ book|field_verbose_name:"authors" }}
-        </div>
-        {% for author in book.authors.all %}
-            <div class="author">
-                <div class="author__fullname">
-                    <a href="{{ author.get_absolute_url }}">{{ author }}</a>
-                </div>
+    <div class="book__info">
+        <div class="book__publication-date">
+            <div class="field-name">
+                {{ book|field_verbose_name:"publication_date" }}
             </div>
-        {% endfor %}
+            <div>
+                {% if book.publication_date %}{{ book.publication_date }}{% endif %}
+            </div>
+        </div>
+        <div class="book__isbn">
+            <div class="field-name">
+                {{ book|field_verbose_name:"isbn" }}
+            </div>
+            <div>
+                {{ book.isbn }}
+            </div>
+        </div>
+        <div class="book__genre">
+            <div class="field-name">
+                {{ book|field_verbose_name:"genre" }}
+            </div>
+            <div>
+                {{ book.genre }}
+            </div>
+        </div>
+        <div class="book__page-count">
+            <div class="field-name">
+                {{ book|field_verbose_name:"page_count" }}
+            </div>
+            <div>
+                {% if book.page_count %}{{ book.page_count }}{% endif %}
+            </div>
+        </div>
+        <div class="book__publisher">
+            <div class="field-name">
+                {{ book|field_verbose_name:"publisher" }}
+            </div>
+            <div>
+                {{ book.publisher }}
+            </div>
+        </div>
+        <div class="book__language">
+            <div class="field-name">
+                {{ book|field_verbose_name:"language" }}
+            </div>
+            <div>
+                {{ book.language }}
+            </div>
+        </div>
+        <div class="book__description">
+            <div class="field-name">
+                {{ book|field_verbose_name:"description" }}
+            </div>
+            <div>
+                {{ book.description }}
+            </div>
+        </div>
+        <div class="authors">
+            <div class="field-name">
+                {{ book|field_verbose_name:"authors" }}
+            </div>
+            {% for author in book.authors.all %}
+                <div class="author">
+                    <div class="author__fullname">
+                        <a href="{{ author.get_absolute_url }}">{{ author }}</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </div>
-
 {% endblock %}
