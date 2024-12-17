@@ -3,6 +3,8 @@
 ![Static Badge](https://img.shields.io/badge/django%20-%20%23000000?logo=django)
 ![Static Badge](https://img.shields.io/badge/postgresql%20-%20%23000000?logo=postgresql)
 ![Static Badge](https://img.shields.io/badge/javascipt%20-%20%23000000?logo=JavaScript)
+![Static Badge](https://img.shields.io/badge/webpack%20-%20%23000000?logo=webpack)
+![Static Badge](https://img.shields.io/badge/docker%20-%20%23000000?logo=docker)
 ![Static Badge](https://img.shields.io/badge/html5%20-%20%23000000?logo=HTML5)
 ![Static Badge](https://img.shields.io/badge/css3%20-%20%23000000?logo=CSS3&logoColor=%231572B6)
 ![Static Badge](https://img.shields.io/badge/SASS%20-%20%23000000?logo=SASS)
@@ -32,20 +34,19 @@
 
 ## Реализация
 
-- Созданы необходимые модели с примерным минимальным наборот полей
+- Созданы необходимые модели с примерным минимальным набором полей
 - Релизован функционал добавления и удаления книг и авторов
-- Реализован поиск по книгам и по авторам
+- Реализован поиск по книгам и авторам
 - В качестве СУБД выбран `PostgreSQL`
 - Прикручен `Redis`
-- Прикручен `Webpack` и `SASS` (для убобства)
-- Для удобной работы с m2m прикручена библиотека `django-select2`
+- Прикручен `Webpack` и `SASS` (для удобства)
+- Для удобной работы на фронте с m2m прикручена библиотека `django-select2`
 - Для работы в prod-режиме используется `gunicorn` + `whitenoise`
-- Для удобства добавлены фикстуры и всё завернуто в `docker`
-
+- Для удобства добавлены фикстуры и всё завёрнуто в `docker`
 
 ### Развёртывание приложения
 
 - Проверить файл `entrypoint.sh`, чтобы окончание строк было `LF`
 - Переименовать `.env.example` в `.env` и заполнить своими данными при необходимости
 - Собрать и запустить контейнер `docker-compose up --build`
-- Открыть http://localhost:8000/
+- Приложение будет доступно по адресу http://localhost:8000/
